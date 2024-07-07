@@ -4,7 +4,7 @@ import { BiDollar } from "react-icons/bi";
 const Footer = () => {
     return (
        <div className="bg-slate-950 rounded-lg mt-8">
-         <div className=" w-[95%] mx-auto">
+         <div >
 <div >
 <div >
 <div className="flex">
@@ -32,7 +32,7 @@ const Footer = () => {
     <a className="link link-hover">Marketing</a>
   </nav>
 </footer>
-<div className="flex gap-4">
+<div className="flex-row lg:flex gap-4">
 <div className=" pt-10 text-white">
 
    <div className="flex">

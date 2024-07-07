@@ -1,5 +1,6 @@
 
 import Cards from "../Cards/Cards";
+import Comments from "../comments/Comments";
 import Slider from "../slider/Slider";
 
 
@@ -12,6 +13,7 @@ const Home = () => {
         <div>
           <Slider></Slider>
            <Cards></Cards>
+           <Comments></Comments>
             
         </div>
     );
