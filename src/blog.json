@@ -1,0 +1,90 @@
+[
+    {
+         "segment_name": "single_family house",
+         "id": 1,
+          "estate_title": "Modern Family Home",
+          "image": "https://i.ibb.co/DLn3YPz/istockphoto-1410700474-1024x1024.jpg",
+          "description": "A beautiful modern single-family home with a spacious backyard.",
+          "price": "$500,000",
+          "status": "sale",
+          "area_sq_ft": 2500,
+          "location": "123 Maple Street, Springfield, IL",
+          "facilities": ["Living Room", "Kitchen", "2 Bathrooms", "3 Bedrooms", "Garage"]
+        },
+   
+    
+        {
+      "segment_name": "town-houses",
+     
+          "id":2,
+          "estate_title": "Cozy Townhouse",
+          "image": "https://i.ibb.co/ZM38DL5/gettyimages-182930468-612x612.jpg",
+          "description": "A charming townhouse located in a quiet neighborhood.",
+          "price": "$350,000",
+          "status": "sale",
+          "area_sq_ft": 1800,
+          "location": "456 Elm Street, Metropolis, NY",
+          "facilities": ["Living Room", "Kitchen", "1 Bathroom", "2 Bedrooms", "Garden"]
+        },
+      
+   
+    {
+      "segment_name": "Apartment",
+    
+          "id": 3,
+          "estate_title": "Luxury Apartment",
+          "image": "https://i.ibb.co/x3Q0BDS/pexels-photo-6775268.jpg",
+          "description": "A luxury apartment with stunning city views and modern amenities.",
+          "price": "$2,500/month",
+          "status": "rent",
+          "area_sq_ft": 1200,
+          "location": "789 Pine Street, Downtown, LA",
+          "facilities": ["Living Room", "Kitchen", "1 Bathroom", "1 Bedroom", "Gym", "Swimming Pool"]
+        },
+    
+    {
+      "segment_name": "student-house",
+      
+      
+          "id": 4,
+          "estate_title": "Student Housing Complex",
+          "image": "https://i.ibb.co/sst2QVq/Verano-Pl-1.jpg",
+          "description": "Affordable student housing close to the university.",
+          "price": "$1,200/month",
+          "status": "rent",
+          "area_sq_ft": 900,
+          "location": "101 University Ave, College Town, TX",
+          "facilities": ["Living Room", "Kitchen", "2 Bathrooms", "3 Bedrooms", "Study Room"]
+        },
+    
+    {
+      "segment_name": "senior-living communities",
+     
+          "id": 5,
+          "estate_title": "Senior Living Community",
+          "image": "https://i.ibb.co/1nTMkTv/large-home-residential-house-architecture-53610.jpg",
+          "description": "Comfortable and safe senior living community with various amenities.",
+          "price": "$3,000/month",
+          "status": "rent",
+          "area_sq_ft": 800,
+          "location": "202 Sunset Blvd, Serenity City, FL",
+          "facilities": ["Living Room", "Kitchen", "1 Bathroom", "1 Bedroom", "Community Hall", "Healthcare Services"]
+        },
+    
+    {
+         "segment_name": "vacation rentals",
+    
+          "id": 6,
+          "estate_title": "Beachfront Vacation Home",
+          "image": "https://i.ibb.co/W5fvXXj/pexels-photo-9220877.jpg",
+          "description": "A beautiful vacation home with direct access to the beach.",
+          "price": "$1,000/week",
+          "status": "rent",
+          "area_sq_ft": 1500,
+          "location": "303 Ocean Drive, Beach City, CA",
+          "facilities": ["Living Room", "Kitchen", "2 Bathrooms", "2 Bedrooms", "Swimming Pool", "Beach Access"]
+        }
+       
+   
+  ]
+  
