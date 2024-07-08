@@ -1,12 +1,24 @@
+import { useContext } from "react";
 import { FaHome } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
-
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import { FaUserCircle } from "react-icons/fa";
 const NavigationBar = () => {
+    const {user,logOut}=useContext(AuthContext);
+
+    const handleSignOut=()=>{
+      logOut()
+      .then()
+      .catch()
+    }
+
+
 
     const links = <>
     <li> <NavLink  to="/">Home</NavLink> </li>
-    <li> <NavLink  to="/updateProfile">UpdateProfile</NavLink> </li>
-    <li> <NavLink  to="/userProfile">UserProfile</NavLink> </li>
+    <li> <NavLink  to="/register">Register</NavLink> </li>
+    <li> <NavLink  to="/login">LogIn</NavLink> </li>
+    
      </>
     
 
@@ -43,10 +55,22 @@ const NavigationBar = () => {
       </ul>
   </div>
   <div className="navbar-end">
-  <img className="w-12 rounded-full" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+  {
+    user ? 
+     <>
+      <button onClick={handleSignOut}  className="text-xl font-bold btn text-lime-800" >SignOut</button> 
+     <FaUserCircle className="w-10 h-10 ml-2"></FaUserCircle>
+    </>
+    
+    :
+    <Link to="/login">
+    <button   className="text-xl font-bold btn text-lime-800" >SignIn</button>
+    </Link>
+  }
+
   </div>
 </div>
-        </div>
+ </div>
     );
 };
 

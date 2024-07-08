@@ -70,7 +70,7 @@ const Comments = () => {
               <div className="flex gap-4">
                 <img className="w-28 h-28 rounded-tr-lg" src="https://i.ibb.co/TRQWCgk/portrait-professional-businesswoman-office-portrait-office-girl-businesswoman-face-179935-48168.jpg" alt="" />
                 <div>
-                  <p className="text-white text-xl font-bold mt-4">Mrs.India</p>
+                  <p className="text-white text-xl font-bold mt-4">Mrs.Swarna</p>
                   <p className="text-gray-500 font-bold">CEO of Company</p>
                 </div>
               </div>
