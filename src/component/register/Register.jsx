@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
@@ -6,7 +6,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
   
-const {createUser,setUser}=useContext(AuthContext);
+const {createUser,setUser,passError,setPassError}=useContext(AuthContext);
 const navigate=useNavigate()
 
 
@@ -16,22 +16,40 @@ const handleRegister=(e)=>{
     const email=e.target.email.value;
     const password=e.target.password.value;
    const photo=e.target.photo.value;
-    console.log(name,email,password,photo);
+
+
+   setPassError('');
+  
+   
+   if(password.length<8){
+    setPassError('Password mustBe longer')
+   return
+   }
+  else if(!/[a-z]/.test(password)){
+    setPassError('AtLeast one character must be small letter')
+   return
+  } 
+  
+
+
 
 // using firebase//
     createUser(email,password)
     .then((result)=>{
       const createUser=result.user;
-      console.log(createUser,'regis');
+      
       navigate('/login')
       setUser(createUser)
-   
+     
+
+     
     })
-    .catch((error)=>{
-      console.log(error.message);
-      
-    })
-       }
+      .catch((error)=>{
+      setPassError(error.message)
+    
+      })
+
+     }
 
 
      
@@ -73,13 +91,19 @@ const handleRegister=(e)=>{
           <button className="btn btn-primary">Register</button>
         </div>
         <p>RegisteredComplete?now  <Link to="/login"><span  className="font-bold text-green-900">login</span></Link> </p>
+ 
+       {
+        passError && <p className="text-red-600">{passError}</p>
 
-
+       }
+     
         
           </form>
          
     </div>
+    
   </div>
+  
 </div>
 
     </div>

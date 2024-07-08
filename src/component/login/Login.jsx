@@ -6,7 +6,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   
-const {signUser,googleSignIn,githubSignIn,setUser}=useContext(AuthContext)
+const {signUser,googleSignIn,githubSignIn,setUser,success,setSuccess}=useContext(AuthContext)
 const location=useLocation()
 const navigate=useNavigate()
 const googleProvider=new GoogleAuthProvider()
@@ -25,6 +25,7 @@ const githubProvider= new GithubAuthProvider()
   .then((result)=>{
     const signUser=result.user;
      setUser(signUser)
+    
 // navigate after login////
     navigate(location?.state? location.state:'/')
   })
@@ -102,8 +103,11 @@ const githubProvider= new GithubAuthProvider()
           <button className="btn btn-primary">Login</button>
         </div>
         <p>First Register?please <Link to="/register"><span  className="font-bold text-green-900">Register</span></Link> </p>
-        <button  onClick={handleGoogle} >Google</button>
-        <button onClick={handleGithub}>github</button>
+       <div className="flex gap-4">
+       <button className="btn  btn-success" onClick={handleGoogle} >SignInWithGoogle</button>
+       <button className="btn btn-secondary" onClick={handleGithub}>SignInWithGithub</button>
+       </div>
+      
       </form>
     </div>
   </div>
