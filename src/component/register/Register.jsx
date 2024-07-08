@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+
 
 
 const Register = () => {
   
-const {createUser}=useContext(AuthContext);
+const {createUser,setUser}=useContext(AuthContext);
+const navigate=useNavigate()
 
 
 const handleRegister=(e)=>{
@@ -19,15 +21,20 @@ const handleRegister=(e)=>{
 // using firebase//
     createUser(email,password)
     .then((result)=>{
-      console.log(result.user);
+      const createUser=result.user;
+      console.log(createUser,'regis');
+      navigate('/login')
+      setUser(createUser)
    
     })
     .catch((error)=>{
       console.log(error.message);
       
     })
+       }
 
-}
+
+     
 
 
     return (
@@ -66,8 +73,10 @@ const handleRegister=(e)=>{
           <button className="btn btn-primary">Register</button>
         </div>
         <p>RegisteredComplete?now  <Link to="/login"><span  className="font-bold text-green-900">login</span></Link> </p>
-      
-      </form>
+
+
+        
+          </form>
          
     </div>
   </div>

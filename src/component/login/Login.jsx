@@ -1,13 +1,16 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 
 const Login = () => {
   
-const {signUser}=useContext(AuthContext)
+const {signUser,googleSignIn,githubSignIn,setUser}=useContext(AuthContext)
 const location=useLocation()
 const navigate=useNavigate()
+const googleProvider=new GoogleAuthProvider()
+const githubProvider= new GithubAuthProvider()
 
  const handleLogin=e=>{
     e.preventDefault();
@@ -15,13 +18,13 @@ const navigate=useNavigate()
     const email=e.target.email.value;
     const password=e.target.password.value;
     const terms =e.target.terms.checked;
-    console.log(name,email,password,terms);
+    
 
 // signIn in firebase///
   signUser(email,password)
   .then((result)=>{
-    console.log(result.user);
-    
+    const signUser=result.user;
+     setUser(signUser)
 // navigate after login////
     navigate(location?.state? location.state:'/')
   })
@@ -30,6 +33,38 @@ const navigate=useNavigate()
   })
    
  }
+
+
+// loginWithGoogle and github///
+
+ const handleGoogle=()=>{
+  googleSignIn(googleProvider)
+   .then((result)=>{
+    const googleUser=result.user
+    setUser(googleUser)
+  navigate(location?.state? location.state:'/')
+  })
+  .catch((error)=>{
+    
+   console.log(error.message);
+ })
+ }
+
+ const handleGithub=()=>{
+  githubSignIn(githubProvider)
+  .then((result)=>{
+    const gitUser=result.user
+   setUser(gitUser)
+   console.log(gitUser);
+     navigate(location?.state? location.state:'/')
+  })
+  .catch((error)=>{
+   console.log(error.message);
+  
+  })
+
+ }
+
 
 
 
@@ -67,6 +102,8 @@ const navigate=useNavigate()
           <button className="btn btn-primary">Login</button>
         </div>
         <p>First Register?please <Link to="/register"><span  className="font-bold text-green-900">Register</span></Link> </p>
+        <button  onClick={handleGoogle} >Google</button>
+        <button onClick={handleGithub}>github</button>
       </form>
     </div>
   </div>

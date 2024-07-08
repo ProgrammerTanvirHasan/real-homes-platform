@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FaHome } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
-import { FaUserCircle } from "react-icons/fa";
+
 const NavigationBar = () => {
     const {user,logOut}=useContext(AuthContext);
 
@@ -59,7 +59,13 @@ const NavigationBar = () => {
     user ? 
      <>
       <button onClick={handleSignOut}  className="text-xl font-bold btn text-lime-800" >SignOut</button> 
-     <FaUserCircle className="w-10 h-10 ml-2"></FaUserCircle>
+    
+       <div className="avatar online " >
+       <div className="w-14 rounded-full ml-2 ">
+        <img src={user.photoURL} />
+      </div>
+       </div>
+     
     </>
     
     :
