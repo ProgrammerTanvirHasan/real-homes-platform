@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
@@ -17,7 +18,15 @@ const githubProvider= new GithubAuthProvider()
     const name=e.target.name.value;
     const email=e.target.email.value;
     const password=e.target.password.value;
-    const terms =e.target.terms.checked;
+    
+
+    setSuccess('')
+
+   
+
+    
+    
+    
     
 
 // signIn in firebase///
@@ -25,7 +34,8 @@ const githubProvider= new GithubAuthProvider()
   .then((result)=>{
     const signUser=result.user;
      setUser(signUser)
-    
+   setSuccess('signIn Successfully')
+   alert('signIn successfully')
 // navigate after login////
     navigate(location?.state? location.state:'/')
   })
@@ -43,6 +53,7 @@ const githubProvider= new GithubAuthProvider()
    .then((result)=>{
     const googleUser=result.user
     setUser(googleUser)
+    
   navigate(location?.state? location.state:'/')
   })
   .catch((error)=>{
@@ -56,7 +67,9 @@ const githubProvider= new GithubAuthProvider()
   .then((result)=>{
     const gitUser=result.user
    setUser(gitUser)
-   console.log(gitUser);
+   
+   
+   
      navigate(location?.state? location.state:'/')
   })
   .catch((error)=>{
@@ -72,6 +85,9 @@ const githubProvider= new GithubAuthProvider()
 
     return (
         <div>
+          <Helmet>
+            <title>Residential state || logIn</title>
+          </Helmet>
              <div className="hero bg-slate-950 min-h-screen">
   <div className="hero-content ">
    
@@ -94,9 +110,7 @@ const githubProvider= new GithubAuthProvider()
             <span className="label-text">Password</span>
           </label>
           <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-          <label className="label">
-       <p>  <input type="checkbox" name="terms" id="" /> <span>Please check our terms</span> </p>
-         </label>
+          
           
         </div>
         <div className="form-control">
@@ -107,11 +121,14 @@ const githubProvider= new GithubAuthProvider()
        <button className="btn  btn-success" onClick={handleGoogle} >SignInWithGoogle</button>
        <button className="btn btn-secondary" onClick={handleGithub}>SignInWithGithub</button>
        </div>
-      
+      {
+        success && <p className="text- text-xl">{success}</p>
+      }
       </form>
     </div>
   </div>
 </div>
+
         </div>
     );
 };

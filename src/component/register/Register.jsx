@@ -1,12 +1,13 @@
 import { useContext} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 
 
 const Register = () => {
   
-const {createUser,setUser,passError,setPassError}=useContext(AuthContext);
+const {createUser,setUser,passError,setPassError,updated}=useContext(AuthContext);
 const navigate=useNavigate()
 
 
@@ -16,7 +17,7 @@ const handleRegister=(e)=>{
     const email=e.target.email.value;
     const password=e.target.password.value;
    const photo=e.target.photo.value;
-
+   const terms =e.target.terms.checked;
 
    setPassError('');
   
@@ -25,10 +26,15 @@ const handleRegister=(e)=>{
     setPassError('Password mustBe longer')
    return
    }
+   else if(terms==false){
+    alert('first checked our terms')
+    return
+   }
   else if(!/[a-z]/.test(password)){
     setPassError('AtLeast one character must be small letter')
    return
   } 
+  
   
 
 
@@ -36,13 +42,23 @@ const handleRegister=(e)=>{
 // using firebase//
     createUser(email,password)
     .then((result)=>{
-      const createUser=result.user;
+      const currentUser=result.user;
+      alert('user created successfully')
       
-      navigate('/login')
-      setUser(createUser)
-     
+  //  updated(currentUser,{
+  //   displayName:name,
+  //   photoURL:"https://example.com/jane-q-user/profile.jpg"
+  //  })
+  //  .then(()=>{
+  //   alert('profile updated')
+  //  })
+  // .catch(error=>{
+  //   console.log(error.message);
+  // })
 
-     
+        navigate('/login')
+      setUser(currentUser)
+         
     })
       .catch((error)=>{
       setPassError(error.message)
@@ -51,12 +67,14 @@ const handleRegister=(e)=>{
 
      }
 
-
      
 
 
     return (
     <div>
+      <Helmet>
+        <title>Residential state || Registration</title>
+      </Helmet>
         <div className="hero bg-slate-950 min-h-screen">
   <div className="hero-content ">
    
@@ -85,7 +103,9 @@ const handleRegister=(e)=>{
           </label>
           <input type="password" name="password" placeholder="password" className="input input-bordered" required />
           <br />
-        
+          <label className="label">
+       <p>  <input type="checkbox" name="terms" id="" /> <span>Please check our terms</span> </p>
+         </label>
         </div>
         <div className="form-control ">
           <button className="btn btn-primary">Register</button>
@@ -96,7 +116,7 @@ const handleRegister=(e)=>{
         passError && <p className="text-red-600">{passError}</p>
 
        }
-     
+      
         
           </form>
          
@@ -111,3 +131,6 @@ const handleRegister=(e)=>{
 };
 
 export default Register;
+
+
+
