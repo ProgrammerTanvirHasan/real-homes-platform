@@ -2,12 +2,14 @@ import { useContext} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
+import { getAuth, updateProfile } from "firebase/auth";
+import app from "../../firebase/firebase.config";
 
-
+const auth = getAuth(app);
 
 const Register = () => {
   
-const {createUser,setUser,passError,setPassError,updated}=useContext(AuthContext);
+const {createUser,setUser,passError,setPassError,setSuccess}=useContext(AuthContext);
 const navigate=useNavigate()
 
 
@@ -16,11 +18,11 @@ const handleRegister=(e)=>{
     const name=e.target.name.value;
     const email=e.target.email.value;
     const password=e.target.password.value;
-   const photo=e.target.photo.value;
+   const photoURL=e.target.photo.value;
    const terms =e.target.terms.checked;
 
    setPassError('');
-  
+  console.log(name,photo,'name and photo');
    
    if(password.length<8){
     setPassError('Password mustBe longer')
@@ -45,16 +47,24 @@ const handleRegister=(e)=>{
       const currentUser=result.user;
       alert('user created successfully')
       
-  //  updated(currentUser,{
-  //   displayName:name,
-  //   photoURL:"https://example.com/jane-q-user/profile.jpg"
-  //  })
-  //  .then(()=>{
-  //   alert('profile updated')
-  //  })
-  // .catch(error=>{
-  //   console.log(error.message);
-  // })
+         
+
+      updateProfile(auth.currentUser, {
+        displayName: name, photoURL: photoURL,
+      }).then((result) => {
+        setSuccess(result.user)
+        console.log('updated successfully');
+      }).catch((error) => {
+        setPassError(error.message)
+      });
+
+
+
+
+
+
+
+
 
         navigate('/login')
       setUser(currentUser)

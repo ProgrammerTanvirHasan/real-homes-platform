@@ -24,11 +24,6 @@ const createUser=(email,password)=>{
     
 }
 
-// const updated= (currentUser)=>{
-//     setLoading(true)
-//  return updateProfile(auth.currentUser)
-// }
-
 
 
 
@@ -83,7 +78,6 @@ const authInfo={
     success,
     setSuccess,
    
-    
   
  
    
