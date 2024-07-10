@@ -22,7 +22,7 @@ const handleRegister=(e)=>{
    const terms =e.target.terms.checked;
 
    setPassError('');
-  console.log(name,photo,'name and photo');
+  console.log(name,photoURL,'name and photo');
    
    if(password.length<8){
     setPassError('Password mustBe longer')

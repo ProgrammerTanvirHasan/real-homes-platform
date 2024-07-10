@@ -66,8 +66,8 @@ const NavigationBar = () => {
                                    onMouseLeave={mouseLeave}
                                    className="relative flex"
                                   >
-                                     <div className={visible ? "absolute -top-10 right-0 bg-white text-lime-900 p-1 rounded" : "hidden"}>
-                                    {user.email}
+                                     <div className={visible ? "absolute -top-10 right-0 bg-white text-lime-900 p-1 rounded " : "hidden"}>
+                                    {user.email || "EmailNotFound"}
                                     </div>
 
 
