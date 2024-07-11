@@ -6,7 +6,7 @@ const Cards = () => {
 const [estates,setEstate]=useState([])
 
     useEffect(()=>{
-        fetch('/src/blog.json')
+        fetch('/blogs.json')
         .then(res => res.json())
         .then(data => setEstate(data))
     },[]);

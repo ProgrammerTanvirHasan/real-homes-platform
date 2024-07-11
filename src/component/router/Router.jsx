@@ -22,7 +22,7 @@ const router= createBrowserRouter([
       {
         path:"/details/:id",
         element:<PrivateRoute><Details></Details></PrivateRoute> ,
-       loader:()=>fetch('/src/blog.json')
+       loader:()=>fetch('/blogs.json')
       },
       {
         path:"/register",
